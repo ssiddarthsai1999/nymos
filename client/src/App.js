@@ -98,17 +98,17 @@ function App() {
                     <Route
                         element={
                             <div className="scroll-smooth antialiased flex flex-col min-h-screen">
-                                {/* <div className="w-full md:fixed top-0 z-40">
+                                <div className="w-full md:fixed top-0 z-40">
                                     <Navbar handleSubscribe={handleSubscribe} />
-                                </div> */}
+                                </div>
                                 <Outlet />
                                 <div className="flex-grow"></div>
-                                <div
+                                {/* <div
                                     className="pt-[80px] md:pt-[150px] bottom-0"
                                     id="footer"
                                 >
                                     <Footer />
-                                </div>
+                                </div> */}
                             </div>
                         }
                     >

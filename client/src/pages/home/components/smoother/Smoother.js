@@ -37,7 +37,7 @@ function Smoother() {
         <div
             id="scene"
             ref={sceneRef}
-            className="text-center  flex justify-center items-center align-middle h-screen"
+            className="overflow-hidden text-center  flex justify-center items-center align-middle h-screen"
         >
             <div>
                 <h1 className="">Saga studio</h1>

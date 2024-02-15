@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import "./hero.css"; // Ensure your CSS has the necessary styling for the background
+import "./story.css"; // Ensure your CSS has the necessary styling for the background
 import SplitText from "gsap-trial/SplitText";
 import gsap from "gsap";
 
-function Hero() {
+function Story({ handleNormal }) {
     const [mousePosition, setMousePosition] = useState({
         x: -10000,
         y: -10000,
@@ -47,20 +47,19 @@ function Hero() {
             },
         });
 
-gsap.from("#splitButton", {
-    duration: 3.5,
-    scale:100,
+        gsap.from("#splitButton", {
+            duration: 3.5,
+            scale: 100,
 
-    y: -500,
-    ease: "back.out(1.7)",
-});
+            y: -500,
+            ease: "back.out(1.7)",
+        });
 
         return () => {
             window.removeEventListener("mousemove", updateMousePosition);
             // Clean up resources for both SplitText instances
             splitH1.revert();
             splitH3.revert();
-
         };
     }, []); // Empty dependency array ensures this effect only runs once on mount
 
@@ -74,10 +73,10 @@ gsap.from("#splitButton", {
     };
 
     return (
-        <div className="min-h-screen heroBg md:max-w-[100%] mx-auto max-w-full align-middle flex items-center justify-center ">
+        <div className="min-h-screen overflow-hidden heroBg md:max-w-[100%] mx-auto max-w-full align-middle flex items-center justify-center ">
             <div style={maskStyle} />
             <div
-                className="content text-center  "
+                className="content text-center p-6 md:p-4  "
                 style={{ position: "relative", zIndex: 2 }}
             >
                 <h1 id="splith1" className="text-white">
@@ -87,12 +86,16 @@ gsap.from("#splitButton", {
                     Unleash the Power of Strategic Marketing Solutions for
                     Growth and Success
                 </h3>
-                <button id="splitButton" className="buttonVariation1">
-                    Purchase Now
+                <button
+                    id="splitButton"
+                    className="buttonVariation1"
+                    onClick={handleNormal}
+                >
+                    Skip Story
                 </button>
             </div>
         </div>
     );
 }
 
-export default Hero;
+export default Story;
