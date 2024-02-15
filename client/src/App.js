@@ -16,7 +16,7 @@ import {
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
+
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
@@ -57,7 +57,7 @@ function App() {
     gsap.registerPlugin(
         ScrollTrigger,
         ScrollToPlugin,
-        ScrollSmoother,
+
         SplitText,
         useGSAP
     );
