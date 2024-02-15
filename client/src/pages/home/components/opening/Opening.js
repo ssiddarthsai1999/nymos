@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import SplitText from "gsap-trial/SplitText";
+import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
 
 function Opening({ handleLetsGo }) {

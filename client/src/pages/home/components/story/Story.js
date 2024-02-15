@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./story.css"; // Ensure your CSS has the necessary styling for the background
-import SplitText from "gsap-trial/SplitText";
+import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
 
 function Story({ handleNormal }) {

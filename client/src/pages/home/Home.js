@@ -6,14 +6,7 @@ import Opening from "./components/opening/Opening";
 import ProgressStart from "./components/progressStart/ProgressStart";
 
 import gsap from "gsap";
-function Home({ data }) {
-    const [pageName, setPageName] = useState(
-        "progress",
-        "opening",
-        "story",
-        "normal" || "progress"
-    );
-
+function Home({ data, pageName, setPageName }) {
     const handleLetsGo = () => {
         setPageName("story");
     };

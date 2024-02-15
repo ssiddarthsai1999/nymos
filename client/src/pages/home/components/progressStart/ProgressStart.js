@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { CircularProgress, LinearProgress } from "@mui/material/";
+import { CircularProgress, LinearProgress, Stack } from "@mui/material/";
 
-import SplitText from "gsap-trial/SplitText";
+import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
 function ProgressStart({ setPageName }) {
     const [progress, setProgress] = useState(0);
@@ -37,19 +37,17 @@ function ProgressStart({ setPageName }) {
         <div className="min-h-screen bg-black  md:max-w-[100%] mx-auto max-w-full align-middle flex items-center justify-center ">
             <div />
             <div
-                className="content text-center  "
+                className="content text-center w-[250px] "
                 style={{ position: "relative", zIndex: 2 }}
             >
-                <h1 className="text-white" id="splith1">
-                    Loading!
-                </h1>
-                <div>
+                <div className="">
                     {" "}
-                    <LinearProgress color="secondary" />
-                    <LinearProgress color="success" />
-                    <LinearProgress color="inherit" />
+                    <Stack spacing={2}>
+                        <h1></h1>
+                        <LinearProgress color="inherit" />
+                    </Stack>
                 </div>
-                <p> {progress.toFixed(0)}%</p>
+                {/* <p> {progress.toFixed(0)}%</p> */}
             </div>
         </div>
     );

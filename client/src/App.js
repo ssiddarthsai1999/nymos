@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { scroll } from "framer-motion/dom";
 import { motion } from "framer-motion";
@@ -19,7 +19,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap-trial/ScrollSmoother";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useGSAP } from "@gsap/react";
-import SplitText from "gsap-trial/SplitText";
+import { SplitText } from "gsap/SplitText";
 import Home from "./pages/home/Home";
 import Navbar from "./pages/shared/navbar/Navbar";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,7 +31,12 @@ function App() {
     const dispatch = useDispatch();
     const { mode } = useSelector((state) => state.theme);
     const profile = JSON.parse(localStorage.getItem("profile"));
-
+    const [pageName, setPageName] = useState(
+        "progress",
+        "opening",
+        "story",
+        "normal" || "progress"
+    );
     const handleSubscribe = async () => {
         Navigate("/#footer");
     };
@@ -98,9 +103,13 @@ function App() {
                     <Route
                         element={
                             <div className="scroll-smooth antialiased flex flex-col min-h-screen">
-                                <div className="w-full md:fixed top-0 z-40">
-                                    <Navbar handleSubscribe={handleSubscribe} />
-                                </div>
+                                {pageName === "normal" && (
+                                    <div className="w-full md:fixed top-0 z-40">
+                                        <Navbar
+                                            handleSubscribe={handleSubscribe}
+                                        />
+                                    </div>
+                                )}
                                 <Outlet />
                                 <div className="flex-grow"></div>
                                 {/* <div
@@ -113,7 +122,16 @@ function App() {
                         }
                     >
                         {/*Auth......................*/}
-                        <Route element={<Home data={data} />} path="/" />
+                        <Route
+                            element={
+                                <Home
+                                    data={data}
+                                    setPageName={setPageName}
+                                    pageName={pageName}
+                                />
+                            }
+                            path="/"
+                        />
 
                         {/* <Route element={<Login />} path="/login" />
                         <Route element={<Register />} path="/register" />
