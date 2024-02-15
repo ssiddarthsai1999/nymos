@@ -48,7 +48,7 @@ function Navbar() {
                     className="items-center justify-center align-middle"
                 >
                     <div className="flex cursor-pointer ">
-                        <img src={logo} alt="logo" className="w-10" />
+                        <h1 className="text-lg">Nymos</h1>
                     </div>
                 </Link>
 
