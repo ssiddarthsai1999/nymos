@@ -1,0 +1,19 @@
+.heroBg {
+    position: relative; /* Needed to position the pseudo-element */
+    background-image: url("../../.././../assets//images/jelly.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.heroBg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0); /* Initial full cover */
+    pointer-events: none; /* Allows interaction with elements underneath */
+}
