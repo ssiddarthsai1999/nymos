@@ -118,7 +118,7 @@ function App() {
                             element={
                                 <div className="scroll-smooth antialiased flex flex-col min-h-screen">
                                     {pageName === "normal" && (
-                                        <div className="w-full md:fixed top-0 z-40">
+                                        <div className="w-full absolute md:fixed top-0 z-40">
                                             <Navbar
                                                 handleSubscribe={
                                                     handleSubscribe
