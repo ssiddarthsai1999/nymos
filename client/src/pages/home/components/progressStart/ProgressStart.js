@@ -37,7 +37,7 @@ function ProgressStart({ setPageName }) {
         <div className="min-h-screen bg-black  md:max-w-[100%] mx-auto max-w-full align-middle flex items-center justify-center ">
             <div />
             <div
-                className="content text-center w-[250px] "
+                className="content text-center max-w-[400px] min-w-[200px] w-[250px] mx-auto"
                 style={{ position: "relative", zIndex: 2 }}
             >
                 <div className="">
