@@ -63,7 +63,7 @@ function Navbar() {
                                 Home
                             </li>
                         </Link>
-                        <Link to="/about">
+                        <Link to="/">
                             <li className="text-[#444444] duration-300 ease-in border-transparent hover:border-[#444444] px-3 py-2 rounded-[4px] hover:bg-white hover:text-black">
                                 Upgrade
                             </li>
@@ -73,7 +73,7 @@ function Navbar() {
                                 Stake
                             </li>
                         </Link>
-                        <Link to="/about" onClick={closeMenu}>
+                        <Link to="/" onClick={closeMenu}>
                             <li className=" text-[#444444] duration-300 ease-in border-transparent hover:border-[#444444] px-3 py-2 rounded-[4px] hover:bg-white hover:text-black">
                                 {" "}
                                 Collection
@@ -84,7 +84,7 @@ function Navbar() {
                                 Merch
                             </li>
                         </Link>
-                        <Link to="/about" onClick={closeMenu}>
+                        <Link to="/" onClick={closeMenu}>
                             <li className="text-[#444444] duration-300 ease-in border-transparent hover:border-[#444444] px-3 py-2 rounded-[4px] hover:bg-white hover:text-black">
                                 Brand
                             </li>
@@ -118,19 +118,19 @@ function Navbar() {
                                 <Link to="/" onClick={closeMenu}>
                                     <li>Home</li>
                                 </Link>
-                                <Link to="/about" onClick={closeMenu}>
+                                <Link to="/" onClick={closeMenu}>
                                     <li>Upgrade</li>
                                 </Link>
                                 <Link to="/" onClick={closeMenu}>
                                     <li>Stake</li>
                                 </Link>
-                                <Link to="/about" onClick={closeMenu}>
+                                <Link to="/" onClick={closeMenu}>
                                     <li>Collection</li>
                                 </Link>
                                 <Link to="/" onClick={closeMenu}>
                                     <li>Merch</li>
                                 </Link>
-                                <Link to="/about" onClick={closeMenu}>
+                                <Link to="/" onClick={closeMenu}>
                                     <li>Brand</li>
                                 </Link>
                                 {/* More links */}

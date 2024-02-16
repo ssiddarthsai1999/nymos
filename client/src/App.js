@@ -15,7 +15,7 @@ import {
 } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { useGSAP } from "@gsap/react";
 import { SplitText } from "gsap/SplitText";
@@ -52,20 +52,33 @@ function App() {
         localStorage.setItem("themeMode", mode);
     }, [mode]);
 
+    useEffect(() => {
+        const smoother = ScrollSmoother.create({
+            smooth: 1000, // Customize based on your preference
+            effects: true,
+            smoothTouch: 20.01,
+        });
+
+        return () => smoother.kill(); // Clean up
+    }, []);
+
     console.log("data", data);
     gsap.registerPlugin(
         ScrollTrigger,
         ScrollToPlugin,
-
+        ScrollSmoother,
         SplitText,
         useGSAP
     );
+
+    // create the smooth scroller FIRST!
+
     return (
         <div className={`${mode === "dark" ? "dark-mode" : "light-mode"}`}>
             <AnimatedCursor
                 innerSize={9}
                 outerSize={10}
-                color="13, 11, 111"
+                color="0, 82, 255"
                 outerAlpha={0.2}
                 innerScale={0.7}
                 outerScale={5}

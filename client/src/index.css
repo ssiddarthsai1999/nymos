@@ -3,6 +3,28 @@
 @tailwind utilities;
 
 /* Define basic font settings and color variables */
+/* Width */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #0b012f;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #0b91d9;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #0626c6;
+}
+
 :root {
     /* Font weights */
     --font-weight-regular: 400;
@@ -30,6 +52,7 @@ body {
     color: var(--text-color-light);
     -webkit-overflow-scrolling: touch;
     overflow-scrolling: touch;
+    scroll-behavior: smooth;
 }
 
 /* Headings (h1 - h6) */
@@ -314,7 +337,72 @@ body .dark-mode {
     align-items: center;
     text-align: center;
 }
- .css-futumu-MuiLinearProgress-root span{
-color: rgb(221, 221, 221);
+.css-futumu-MuiLinearProgress-root span {
+    color: rgb(221, 221, 221);
+}
 
+.linearBg {
+    position: relative;
+    z-index: 1;
+
+    background-attachment: fixed; /* Key for parallax effect */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; /* Cover ensures the background covers the div */
+    background-image: linear-gradient(
+        to right top,
+        #220530,
+        #1a0930,
+        #130b2e,
+        #0c0d2b,
+        #060e28,
+        #020f25,
+        #001022,
+        #00101e,
+        #00101a,
+        #000f16,
+        #000e11,
+        #010c0c
+    );
+    /* background-image: linear-gradient(
+        to right top,
+        #1d1c1c,
+        #20191b,
+        #22161c,
+        #201420,
+        #1b1326,
+        #141427,
+        #0b1428,
+        #001527,
+        #001421,
+        #00131a,
+        #001013,
+        #010c0c
+    ); */
+}
+.teamCardBg {
+    background: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    animation: circularMotion 5s infinite linear;
+}
+@keyframes circularMotion {
+    0% {
+        box-shadow: 10px 0 302px 0 rgba(31, 38, 135, 0.37);
+    }
+    25% {
+        box-shadow: 0 10px 32px 0 rgba(31, 135, 86, 0.37);
+    }
+    50% {
+        box-shadow: -10px 0 302px 0 rgba(31, 38, 135, 0.37);
+    }
+    75% {
+        box-shadow: 0 -10px 32px 0 rgba(126, 31, 135, 0.37);
+    }
+    100% {
+        box-shadow: 10px 0 302px 0 rgba(135, 31, 55, 0.37);
+    }
 }

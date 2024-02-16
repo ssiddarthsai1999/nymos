@@ -6,6 +6,8 @@ import Opening from "./components/opening/Opening";
 import ProgressStart from "./components/progressStart/ProgressStart";
 
 import gsap from "gsap";
+import Lore from "./components/lore/Lore";
+import Team from "./components/team/Team";
 function Home({ data, pageName, setPageName }) {
     const handleLetsGo = () => {
         setPageName("story");
@@ -21,7 +23,7 @@ function Home({ data, pageName, setPageName }) {
 
                 yoyo: true, // Go back and forth for the shake effect
 
-                duration: 4, // Duration for the slide-in animation
+                duration: 2, // Duration for the slide-in animation
                 ease: "power3.out", // Use an ease for a smoother slide-in
             });
         }
@@ -45,8 +47,16 @@ function Home({ data, pageName, setPageName }) {
                 </div>
             )}
             {pageName === "normal" && (
-                <div className="" id="normal-page">
-                    <Smoother />
+                <div className="linearBg">
+                    <div className="" id="normal-page">
+                        <Smoother />
+                    </div>
+                    <div className="" id="normal-page">
+                        <Lore />
+                    </div>
+                    <div className="" id="normal-page">
+                        <Team data={data} />
+                    </div>
                 </div>
             )}
 
