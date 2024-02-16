@@ -1,14 +1,35 @@
 import React, { useState, useEffect } from "react";
 import Hero from "./components/story/Story";
+import HeavenScroll from "react-heaven-scroll";
 import Testimonials from "./components/testimonials/Testimonials";
 import Smoother from "./components/smoother/Smoother";
 import Opening from "./components/opening/Opening";
 import ProgressStart from "./components/progressStart/ProgressStart";
-
+import LoadingBar from "react-top-loading-bar";
 import gsap from "gsap";
 import Lore from "./components/lore/Lore";
 import Team from "./components/team/Team";
 function Home({ data, pageName, setPageName }) {
+    const [topLoadingProgress, setTopLoadingProgress] = useState(0);
+    useEffect(() => {
+        const handleScroll = () => {
+            // Calculate the current scroll progress
+            const totalScroll =
+                document.documentElement.scrollHeight - window.innerHeight;
+            const currentScroll = window.scrollY;
+            const scrollProgress = (currentScroll / totalScroll) * 100;
+
+            // Update the loading bar's progress
+            setTopLoadingProgress(scrollProgress);
+        };
+
+        // Add scroll event listener
+        window.addEventListener("scroll", handleScroll);
+
+        // Remove event listener on cleanup
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []); // Empty dependency array means this effect runs once on mount
+
     const handleLetsGo = () => {
         setPageName("story");
     };
@@ -47,17 +68,27 @@ function Home({ data, pageName, setPageName }) {
                 </div>
             )}
             {pageName === "normal" && (
-                <div className="linearBg">
-                    <div className="" id="normal-page">
-                        <Smoother />
+                <HeavenScroll velocity={0.02}>
+                    <div className="linearBg ">
+                        <div className="absolute top-0">
+                            {" "}
+                            <LoadingBar
+                                progress={topLoadingProgress}
+                                color="#0626c6"
+                            />
+                        </div>
+
+                        <div className="" id="normal-page">
+                            <Smoother />
+                        </div>
+                        <div className="" id="normal-page">
+                            <Lore />
+                        </div>
+                        <div className="" id="normal-page">
+                            <Team data={data} />
+                        </div>
                     </div>
-                    <div className="" id="normal-page">
-                        <Lore />
-                    </div>
-                    <div className="" id="normal-page">
-                        <Team data={data} />
-                    </div>
-                </div>
+                </HeavenScroll>
             )}
 
             {/* <div className="">

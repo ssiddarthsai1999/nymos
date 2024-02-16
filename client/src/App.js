@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import AnimatedCursor from "react-animated-cursor";
 import HeavenScroll from "react-heaven-scroll";
 import NotFound from "./pages/shared/notfound/NotFound";
+
 import {
     Navigate,
     Route,
@@ -53,16 +54,6 @@ function App() {
         localStorage.setItem("themeMode", mode);
     }, [mode]);
 
-    useEffect(() => {
-        const smoother = ScrollSmoother.create({
-            smooth: 1000, // Customize based on your preference
-            effects: true,
-            smoothTouch: 20.01,
-        });
-
-        return () => smoother.kill(); // Clean up
-    }, []);
-
     console.log("data", data);
     gsap.registerPlugin(
         ScrollTrigger,
@@ -108,76 +99,74 @@ function App() {
                         },
                     },
                 ]}
-            />{" "}
-            <HeavenScroll velocity={0.02}>
-                <ToastContainer />
-                <Router>
-                    <Routes>
-                        {/*Standard......................*/}
-                        <Route
-                            element={
-                                <div className="scroll-smooth antialiased flex flex-col min-h-screen">
-                                    {pageName === "normal" && (
-                                        <div className="w-full absolute md:fixed top-0 z-40">
-                                            <Navbar
-                                                handleSubscribe={
-                                                    handleSubscribe
-                                                }
-                                            />
-                                        </div>
-                                    )}
-                                    <Outlet />
-                                    <div className="flex-grow"></div>
-                                    {/* <div
+            />
+            <ToastContainer />
+            <Router>
+                {" "}
+                <Routes>
+                    {/*Standard......................*/}
+                    <Route
+                        element={
+                            <div className="scroll-smooth antialiased flex flex-col min-h-screen">
+                                {pageName === "normal" && (
+                                    <div className="w-full  absolute md:fixed top-0 z-40">
+                                        <Navbar
+                                            handleSubscribe={handleSubscribe}
+                                        />
+                                    </div>
+                                )}
+                                <Outlet />
+                                <div className="flex-grow"></div>
+                                {/* <div
                                     className="pt-[80px] md:pt-[150px] bottom-0"
                                     id="footer"
                                 >
                                     <Footer />
                                 </div> */}
-                                </div>
+                            </div>
+                        }
+                    >
+                        {/*Auth......................*/}
+                        <Route
+                            element={
+                                <Home
+                                    data={data}
+                                    setPageName={setPageName}
+                                    pageName={pageName}
+                                />
                             }
-                        >
-                            {/*Auth......................*/}
-                            <Route
-                                element={
-                                    <Home
-                                        data={data}
-                                        setPageName={setPageName}
-                                        pageName={pageName}
-                                    />
-                                }
-                                path="/"
-                            />
+                            path="/"
+                        />
 
-                            {/* <Route element={<Login />} path="/login" />
+                        {/* <Route element={<Login />} path="/login" />
                         <Route element={<Register />} path="/register" />
                         <Route
                             path="/verifyEmail/:token"
                             element={<VerifyEmail />}
                         /> */}
 
-                            {/* <Route
+                        {/* <Route
                             path="/reset-password/:resetToken"
                             element={<ResetPassword />}
                         /> */}
-                            {/*Posts......................*/}
-                            {/* <Route
+                        {/*Posts......................*/}
+                        {/* <Route
                             element={<AllPosts />}
                             path="/projects/allposts"
                         /> */}
 
-                            {/*Analysis and tldr......................*/}
-                            {/* <Route element={<Analysis />} path="/deck" />
+                        {/*Analysis and tldr......................*/}
+                        {/* <Route element={<Analysis />} path="/deck" />
                         <Route element={<Tldr />} path="/tldr" /> */}
-                            {/*Profile......................*/}
-                            {/* <Route
+                        {/*Profile......................*/}
+                        {/* <Route
                             element={<AuthUserRoute element={<Profile />} />}
                             path="/profile"
                         /> */}
-                        </Route>
+                    </Route>
 
-                        {/*Admin route......................*/}
-                        {/* <Route
+                    {/*Admin route......................*/}
+                    {/* <Route
                         element={
                             <div className="scroll-smooth antialiased flex  ">
                                 {" "}
@@ -209,11 +198,10 @@ function App() {
                         />
                     </Route> */}
 
-                        {/*Error 404 not found......................*/}
-                        <Route path="*" element={<NotFound />} />
-                    </Routes>
-                </Router>{" "}
-            </HeavenScroll>
+                    {/*Error 404 not found......................*/}
+                    <Route path="*" element={<NotFound />} />
+                </Routes>{" "}
+            </Router>{" "}
         </div>
     );
 }
