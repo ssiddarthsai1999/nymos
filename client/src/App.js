@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import AnimatedCursor from "react-animated-cursor";
 import HeavenScroll from "react-heaven-scroll";
 import NotFound from "./pages/shared/notfound/NotFound";
-
+import LoadingBar from "react-top-loading-bar";
 import {
     Navigate,
     Route,
@@ -29,6 +29,8 @@ import Footer from "./pages/shared/footer/Footer";
 import data from "../src/data.json";
 import Navbars from "./pages/shared/navbar/Navbars";
 function App() {
+    const [topLoadingProgress, setTopLoadingProgress] = useState(0);
+
     const dispatch = useDispatch();
     const { mode } = useSelector((state) => state.theme);
     const profile = JSON.parse(localStorage.getItem("profile"));
@@ -54,7 +56,6 @@ function App() {
         localStorage.setItem("themeMode", mode);
     }, [mode]);
 
-    console.log("data", data);
     gsap.registerPlugin(
         ScrollTrigger,
         ScrollToPlugin,
@@ -63,7 +64,26 @@ function App() {
         useGSAP
     );
 
-    // create the smooth scroller FIRST!
+    useEffect(() => {
+        const handleScroll = () => {
+            // Calculate the current scroll progress
+            const totalScroll =
+                document.documentElement.scrollHeight - window.innerHeight;
+            const currentScroll = window.scrollY;
+            const scrollProgress = (currentScroll / totalScroll) * 100;
+
+            // Update the loading bar's progress
+            setTopLoadingProgress(scrollProgress);
+        };
+
+        // Add scroll event listener
+        window.addEventListener("scroll", handleScroll);
+
+        // Remove event listener on cleanup
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []); // Empty dependency array means this effect runs once on mount
+
+
 
     return (
         <div className={`${mode === "dark" ? "dark-mode" : "light-mode"}`}>
@@ -110,6 +130,9 @@ function App() {
                             <div className="scroll-smooth antialiased flex flex-col min-h-screen">
                                 {pageName === "normal" && (
                                     <div className="w-full  absolute md:fixed top-0 z-40">
+                                        <LoadingBar
+                                            progress={topLoadingProgress}
+                                        ></LoadingBar>
                                         <Navbar
                                             handleSubscribe={handleSubscribe}
                                         />

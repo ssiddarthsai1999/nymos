@@ -4,7 +4,7 @@
 
 /* Define basic font settings and color variables */
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 /* Width */
 ::-webkit-scrollbar {
@@ -392,6 +392,51 @@ body .dark-mode {
     border: 1px solid rgba(255, 255, 255, 0.18);
     animation: circularMotion 5s infinite linear;
 }
+/* Base state: applying transition properties here ensures smooth changes */
+.navbarBase {
+    transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease, border-bottom 0.3s ease;
+    background: transparent; /* Default state */
+    box-shadow: none; /* Default state */
+    backdrop-filter: none; /* Default state */
+    border-bottom: none; /* Default state */
+    /* Apply other base styles here */
+}
+
+/* Scrolled state */
+.navbarBg {
+    background: rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    /* Remove or adjust the animation property if it interferes with the transition */
+    /* animation: navbarMotion 5s infinite linear; */
+}
+
+
+@keyframes navbarMotion {
+    0% {
+        border-bottom: 3px solid rgba(31, 38, 135, 0.37);
+        box-shadow: 10px 0 302px 0 rgba(31, 38, 135, 0.37);
+    }
+    25% {
+        border-bottom: 3px solid rgba(31, 38, 135, 0.37);
+        box-shadow: 0 10px 32px 0 rgba(31, 38, 135, 0.37);
+    }
+    50% {
+        border-bottom: 3px solid rgba(31, 114, 135, 0.37);
+        box-shadow: -10px 0 302px 0 rgba(31, 114, 135, 0.37);
+    }
+    75% {
+        border-bottom: 3px solid rgba(111, 31, 135, 0.37);
+        box-shadow: -10px 0 302px 0 rgba(111, 31, 135, 0.37);
+    }
+    100% {
+        border-bottom: 3px solid rgba(31, 38, 135, 0.37);
+        box-shadow: -10px 0 302px 0 rgba(31, 38, 135, 0.37);
+    }
+}
+
 @keyframes circularMotion {
     0% {
         box-shadow: 10px 0 302px 0 rgba(31, 38, 135, 0.37);

@@ -10,6 +10,18 @@ function Navbar() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { mode } = useSelector((state) => state.theme);
+    const [isScrolled, setIsScrolled] = useState(false);
+    useEffect(() => {
+        const handleScroll = () => {
+            // Set isScrolled true if page is scrolled more than 50px, otherwise false
+            setIsScrolled(window.scrollY > 250);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        // Cleanup
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     useEffect(() => {
         const handleResize = () => {
@@ -38,9 +50,9 @@ function Navbar() {
 
     return (
         <div
-            className={`w-full items-center align-middle p-4 ${
-                mode === "dark" ? "bg-transparent" : "bg-transparent"
-            }`}
+            className={`w-full items-center align-middle   p-4 ${
+                !isScrolled ? "bg-transparent" : "navbarBg"
+            } ${mode === "dark" ? "navbarBase" : "bg-transparent"}`}
         >
             <div className="flex justify-between items-center  md:px-24 px-6">
                 <Link
