@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 /* Define basic font settings and color variables */
+html {
+  scroll-behavior: smooth;
+}
 /* Width */
 ::-webkit-scrollbar {
     width: 6px;
